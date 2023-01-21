@@ -1,0 +1,38 @@
+<p-dataView #dv [value]="products" layout="grid" [paginator]="true" [rows]="40">
+  <ng-template pTemplate="header">
+    Kategória:
+    <p-dropdown
+      [options]="categories"
+      optionLabel="name"
+      optionValue="id"
+      [(ngModel)]="selectedCategory"
+      (onChange)="selectCategory()"
+    ></p-dropdown>
+    <p-dataViewLayoutOptions> </p-dataViewLayoutOptions
+  ></ng-template>
+
+  <ng-template let-product pTemplate="listItem">
+    <app-product [data]="product" class="p-col-12" layout="list"></app-product>
+  </ng-template>
+
+  <ng-template let-product pTemplate="gridItem">
+    <app-product
+      [data]="product"
+      class="col-12 md:col-3"
+      layout="grid"
+    ></app-product>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <ng-template pTemplate="paginatorleft" let-state>
+      {{ state.first }}
+      <button type="button" pButton icon="pi-refresh"></button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <button type="button" pButton icon="pi-cloud-upload"></button>
+    </ng-template>
+    <ng-template let-item pTemplate="paginatordropdownitem">
+      {{ item.value }} - per page
+    </ng-template>
+  </ng-template>
+</p-dataView>

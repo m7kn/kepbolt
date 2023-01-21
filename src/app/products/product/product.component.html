@@ -1,0 +1,37 @@
+<div class="product-list-item" *ngIf="layout == 'list'">
+  <div class="product-list-detail">
+    <div class="product-name">{{ data?.name }}</div>
+    <div class="product-description">{{ data?.description }}</div>
+    <i class="pi pi-tag product-category-icon"></i
+    ><span class="product-category">{{ data?.categoryName }}</span>
+  </div>
+  <div class="product-list-action">
+    <span class="product-price">{{ data?.price }} Ft</span>
+    <p-button
+      icon="pi pi-shopping-cart"
+      label="Hozzáadom a kosárhoz"
+    ></p-button>
+  </div>
+</div>
+
+<div class="product-grid-item card" *ngIf="layout == 'grid'">
+  <div class="product-grid-item-top">
+    <div>
+      <i class="pi pi-tag product-category-icon"></i>
+      <span class="product-category">{{ data?.categoryName }}</span>
+    </div>
+    <span [class]="'product-badge'">{{ data?.enabled }}</span>
+  </div>
+  <div class="product-grid-item-content">
+    <img [src]="data?.defaultImageSrc" [alt]="data?.name" />
+    <div class="product-name">{{ data?.name }}</div>
+    <div class="product-description">{{ data?.description }}</div>
+  </div>
+  <div class="product-grid-item-bottom">
+    <span class="product-price">{{ data?.price }} Ft</span>
+    <p-button
+      icon="pi pi-shopping-cart"
+      [disabled]="data?.enabled ? false : true"
+    ></p-button>
+  </div>
+</div>
